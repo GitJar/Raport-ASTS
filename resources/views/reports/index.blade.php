@@ -25,7 +25,11 @@
                 <div class="flex justify-between items-center mb-4">
                     <h3 class="text-lg font-bold text-gray-800">Daftar Siswa Siap Cetak</h3>
                     @if($selectedClassId)
-                        <a href="{{ route('report.print-bulk', $selectedClassId) }}" target="_blank" style="background-color: #16a34a; color: #ffffff;" class="px-4 py-2 bg-green-600 text-white font-bold text-sm rounded-md hover:bg-green-700 shadow-sm">
+                        <a href="{{ route('reports.leger', $selectedClassId) }}" target="_blank" style="background-color: #0284c7; color: #ffffff;" class="px-4 py-2 text-xs font-bold rounded-lg shadow hover:opacity-90 transition-all inline-flex items-center gap-1">
+                            📊 Lihat & Cetak Leger
+                        </a>
+                
+                        <a href="{{ route('report.print-bulk', $selectedClassId) }}" target="_blank" style="background-color: #059669; color: #ffffff;" class="px-4 py-2 text-xs font-bold rounded-lg shadow hover:opacity-90 transition-all inline-flex items-center gap-1">
                             🖨️ Cetak Raport 1 Kelas Massal
                         </a>
                     @endif

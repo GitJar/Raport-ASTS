@@ -59,6 +59,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/classes/{id}', [ClassController::class, 'update'])->name('classes.update');
     Route::put('/students/{id}', [StudentController::class, 'update'])->name('students.update');
     Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
+    Route::get('/reports/leger/{class}', [ReportManagementController::class, 'leger'])->name('reports.leger');
 });
 
 require __DIR__.'/auth.php';
