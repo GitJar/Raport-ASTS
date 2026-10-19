@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+/* Kustomisasi Tampilan Tabel & UI Global */
+@layer components {
+    /* Style Tabel Bergaris & Rapi */
+    table {
+        @apply w-full border-collapse border border-gray-300 rounded-lg overflow-hidden shadow-sm;
+    }
+    
+    thead tr {
+        @apply bg-emerald-800 text-white uppercase text-xs tracking-wider;
+    }
+    
+    thead th {
+        @apply border border-emerald-900 px-4 py-3 font-bold text-center;
+    }
+    
+    tbody tr {
+        @apply border-b border-gray-200 transition-colors duration-150 hover:bg-emerald-50;
+    }
+
+    /* Baris Selang-Seling (Zebra Striping) */
+    tbody tr:nth-child(even) {
+        @apply bg-gray-50;
+    }
+    
+    tbody td {
+        @apply border border-gray-300 px-4 py-2.5 text-sm text-gray-800;
+    }
+
+    /* Input Form dalam Tabel */
+    tbody td input[type="number"],
+    tbody td input[type="text"] {
+        @apply border border-gray-400 rounded px-2 py-1 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all font-semibold text-gray-900;
+    }
+}
