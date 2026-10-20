@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\ClassModel;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Exports\ClassesExport;
+use App\Imports\ClassesImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ClassController extends Controller
 {
@@ -74,5 +77,23 @@ class ClassController extends Controller
         ]);
 
         return back()->with('success', 'Data Kelas Berhasil Diperbarui!');
+    }
+    public function downloadTemplate()
+{
+    return Excel::download(new ClassesExport, 'Template_Import_Kelas.xlsx');
+}
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,xls|max:2048',
+        ]);
+    
+        try {
+            Excel::import(new ClassesImport, $request->file('file'));
+            return back()->with('success', 'Data kelas berhasil di-import dari Excel!');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Gagal mengimpor kelas: ' . $e->getMessage());
+        }
     }
 }

@@ -7,6 +7,7 @@ use App\Models\Student;
 use App\Imports\StudentsImport;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\StudentsExport;
 
 class StudentController extends Controller
 {
@@ -114,5 +115,9 @@ class StudentController extends Controller
         ]);
 
         return back()->with('success', 'Data siswa berhasil diperbarui!');
+    }
+    public function downloadTemplate()
+    {
+        return Excel::download(new StudentsExport, 'Template_Import_Siswa.xlsx');
     }
 }

@@ -60,6 +60,12 @@ Route::middleware('auth')->group(function () {
     Route::put('/students/{id}', [StudentController::class, 'update'])->name('students.update');
     Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
     Route::get('/reports/leger/{class}', [ReportManagementController::class, 'leger'])->name('reports.leger');
+    // Class Import / Export
+    Route::get('/classes/template', [ClassController::class, 'downloadTemplate'])->name('classes.template');
+    Route::post('/classes/import', [ClassController::class, 'import'])->name('classes.import');
+
+    // Student Template
+    Route::get('/students/template', [StudentController::class, 'downloadTemplate'])->name('students.template');
 });
 
 require __DIR__.'/auth.php';

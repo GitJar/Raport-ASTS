@@ -58,6 +58,19 @@
                 <!-- Tabel Daftar Kelas -->
                 <div class="md:col-span-2 bg-white p-6 shadow-sm sm:rounded-lg border border-emerald-100">
                     <h3 class="text-lg font-bold text-gray-800 mb-4">Daftar Kelas Terdaftar</h3>
+                    <div class="bg-white p-4 shadow-sm sm:rounded-lg border border-emerald-100 flex flex-wrap justify-between items-center gap-4 mb-6">
+                    <div class="font-bold text-gray-700">📌 Import Data Kelas Massal</div>
+                        <div class="flex flex-wrap items-center gap-3">
+                            <a href="{{ route('classes.template') }}" style="background-color: #0284c7; color: #ffffff;" class="px-4 py-2 text-xs font-bold rounded-lg shadow hover:opacity-90 inline-flex items-center">
+                                📥 Download Templat Kelas
+                            </a>
+                            <form method="POST" action="{{ route('classes.import') }}" enctype="multipart/form-data" class="flex items-center gap-2 bg-gray-50 p-1.5 rounded-lg border border-gray-300">
+                                @csrf
+                                <input type="file" name="file" accept=".xlsx, .xls" class="text-xs text-gray-600" required>
+                                <button type="submit" style="background-color: #059669; color: #ffffff;" class="px-3 py-1 text-xs font-bold rounded shadow">📤 Import Excel Kelas</button>
+                            </form>
+                        </div>
+                    </div>
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead>
                             <tr>

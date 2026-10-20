@@ -18,14 +18,14 @@ class DummyDataSeeder extends Seeder
             'email' => 'sripratiwi@mtsn3purworejo.sch.id',
             'password' => Hash::make('password123'),
             'role' => 'wali_kelas',
-            'nip_nik' => '197807122005012005',
+            'nip_nik' => '197807122020012020',
         ]);
 
         // 2. Buat Data Kelas VIII.A
         $kelas8a = ClassModel::create([
-            'name' => 'VIIILA',
+            'name' => 'VIII.A',
             'phase' => 'D',
-            'academic_year' => '2025/2026',
+            'academic_year' => '2026/2027',
             'semester' => 'Ganjil',
             'teacher_id' => $waliKelas->id,
             'is_locked' => false,
@@ -36,14 +36,16 @@ class DummyDataSeeder extends Seeder
             'nis' => '121133060003240001',
             'nisn' => '0123107839',
             'name' => 'ACHMAD FARKHAN NAJIHA',
+            'gender' => 'L',
             'class_id' => $kelas8a->id,
         ]);
 
         // Tambahan sampel siswa lain di kelas yang sama
         Student::create([
             'nis' => '121133060003240002',
-            'nisn' => '0123107840',
-            'name' => 'AHMAD SALAM WAHID FAIZIN',
+            'nisn' => '008123457' . $class->id,
+            'name' => 'AISYAH AULIA PUTRI',
+            'gender' => 'P',
             'class_id' => $kelas8a->id,
         ]);
     }

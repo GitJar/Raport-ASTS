@@ -33,22 +33,29 @@
                     </select>
                 </form>
 
+                <!-- Form Import Excel -->
                 @if($selectedClassId)
                 <div class="flex items-center gap-3">
                     <!-- Tombol Tambah Siswa Manual -->
                     <button @click="openCreate = true" style="background-color: #047857; color: #ffffff;" class="px-4 py-2 text-xs font-bold rounded-lg shadow hover:opacity-90 transition-all flex items-center gap-1">
                         ➕ Tambah Siswa Baru
                     </button>
-
-                    <!-- Form Import Excel -->
+                
+                    <!-- Tombol Download Templat Excel Siswa -->
+                    <a href="{{ route('students.template') }}" style="background-color: #0284c7; color: #ffffff;" class="px-3 py-2 text-xs font-bold rounded-lg shadow hover:opacity-90 inline-flex items-center">
+                        📥 Templat Excel Siswa
+                    </a>
+                
+                    <!-- Form Import Excel Siswa -->
                     <form method="POST" action="{{ route('students.import') }}" enctype="multipart/form-data" class="flex items-center gap-2 bg-gray-50 p-1.5 rounded-lg border border-gray-300">
                         @csrf
                         <input type="hidden" name="class_id" value="{{ $selectedClassId }}">
                         <input type="file" name="file" accept=".xlsx, .xls" class="text-xs text-gray-600" required>
-                        <button type="submit" style="background-color: #059669; color: #ffffff;" class="px-3 py-1 text-xs font-bold rounded shadow">📥 Import Excel Siswa</button>
+                        <button type="submit" style="background-color: #059669; color: #ffffff;" class="px-3 py-1 text-xs font-bold rounded shadow">📤 Import Excel Siswa</button>
                     </form>
                 </div>
                 @endif
+
             </div>
 
             <!-- Tabel Daftar Siswa -->
@@ -62,7 +69,7 @@
                             <th>NIS</th>
                             <th>NISN</th>
                             <th>NAMA SISWA</th>
-                            <!--<th>JK</th>-->
+                            <th>JK</th>
                             <th width="120px">AKSI</th>
                         </tr>
                     </thead>
@@ -115,13 +122,13 @@
                         <label class="block text-sm font-medium text-gray-700">NISN</label>
                         <input type="text" name="nisn" placeholder="Contoh: 0123107839" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required>
                     </div>
-                    <!--<div class="mb-4">-->
-                    <!--    <label class="block text-sm font-medium text-gray-700">Jenis Kelamin</label>-->
-                    <!--    <select name="gender" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required>-->
-                    <!--        <option value="L">Laki-laki (L)</option>-->
-                    <!--        <option value="P">Perempuan (P)</option>-->
-                    <!--    </select>-->
-                    <!--</div>-->
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700">Jenis Kelamin</label>
+                        <select name="gender" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required>
+                            <option value="L">Laki-laki (L)</option>
+                            <option value="P">Perempuan (P)</option>
+                        </select>
+                    </div>
                     <div class="flex justify-end gap-2">
                         <button type="button" @click="openCreate = false" class="px-4 py-2 bg-gray-200 text-gray-800 font-bold rounded-md hover:bg-gray-300">Batal</button>
                         <button type="submit" style="background-color: #059669; color: #ffffff;" class="px-4 py-2 font-bold rounded-md shadow-sm">Simpan Siswa</button>
@@ -149,13 +156,13 @@
                         <label class="block text-sm font-medium text-gray-700">NISN</label>
                         <input type="text" name="nisn" x-model="editStudent.nisn" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required>
                     </div>
-                    <!--<div class="mb-4">-->
-                    <!--    <label class="block text-sm font-medium text-gray-700">Jenis Kelamin</label>-->
-                    <!--    <select name="gender" x-model="editStudent.gender" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required>-->
-                    <!--        <option value="L">Laki-laki (L)</option>-->
-                    <!--        <option value="P">Perempuan (P)</option>-->
-                    <!--    </select>-->
-                    <!--</div>-->
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700">Jenis Kelamin</label>
+                        <select name="gender" x-model="editStudent.gender" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required>
+                            <option value="L">Laki-laki (L)</option>
+                            <option value="P">Perempuan (P)</option>
+                        </select>
+                    </div>
                     <div class="flex justify-end gap-2">
                         <button type="button" @click="openEdit = false" class="px-4 py-2 bg-gray-200 text-gray-800 font-bold rounded-md hover:bg-gray-300">Batal</button>
                         <button type="submit" style="background-color: #059669; color: #ffffff;" class="px-4 py-2 font-bold rounded-md shadow-sm">Simpan Perubahan</button>
