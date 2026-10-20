@@ -33,7 +33,7 @@ class ClassModel extends Model
     // Method pembantu pengecekan akses Wali Kelas / Admin
     public function canBeAccessedBy($user)
     {
-        if ($user->role === 'admin' || $user->role === 'kepala_madrasah') {
+        if (in_array($user->role, ['admin', 'kepala_madrasah', 'guru_bk'])) {
             return true;
         }
 

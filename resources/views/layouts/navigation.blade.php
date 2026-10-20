@@ -29,22 +29,28 @@
                     @endif
 
                     <!-- Menu Input Nilai ASTS (Semua Pengajar) -->
+                    @if(in_array(auth()->user()->role, ['admin', 'guru_mapel', 'wali_kelas']))
                     <x-nav-link :href="route('grades.index')" :active="request()->routeIs('grades.index')">
                         {{ __('Input Nilai ASTS') }}
                     </x-nav-link>
+                    @endif
 
                     <!-- Menu Presensi & Catatan (Wali Kelas / BK / Admin) -->
+                    @if(in_array(auth()->user()->role, ['admin', 'guru_bk', 'wali_kelas']))
                     <x-nav-link :href="route('summaries.index')" :active="request()->routeIs('summaries.index')">
                         {{ __('Presensi & Catatan') }}
                     </x-nav-link>
+                    @endif
 
                     <!-- Menu Cetak Raport -->
+                    @if(in_array(auth()->user()->role, ['admin', 'wali_kelas']))
                     <x-nav-link :href="route('reports.index')" :active="request()->routeIs('reports.index')">
                         {{ __('Cetak Raport') }}
                     </x-nav-link>
+                    @endif
 
                     <!-- Menu Khusus Admin & Kepala Sekolah -->
-                    @if(auth()->user()->role === 'admin' || auth()->user()->role === 'kepala_madrasah')
+                    @if(in_array(auth()->user()->role, ['admin', 'kepala_madrasah']))
                     <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
                         {{ __('Data Pengguna') }}
                     </x-nav-link>
