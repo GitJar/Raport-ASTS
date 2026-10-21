@@ -110,7 +110,7 @@
             </td>
             <td width="30%"></td>
             <td width="35%">
-                {{ $reportDate }}<br>
+                Purworejo, {{ $reportDate }}<br>
                 <strong>Wali Kelas</strong>
                 <br><br><br><br><br>
                 <span class="font-bold" style="text-decoration: underline;">{{ $class->teacher->name ?? 'Wali Kelas' }}</span><br>
